@@ -11,9 +11,7 @@ from .consts import *
 from .utils import *
 from .config import *
 
-def test_account_api():
-    account = AccountAPI(API_KEY, API_SECRET, PASSPHRASE, flag = 1)
-    print(account)
+
         
 
 
