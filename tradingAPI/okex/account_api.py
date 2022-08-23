@@ -7,6 +7,13 @@ class AccountAPI(Client):
     def __init__(self, api_key, api_secret_key, passphrase, use_server_time=False, flag='0'):
         Client.__init__(self, api_key, api_secret_key, passphrase, use_server_time, flag)
 
+    # Get Balance
+    def get_account(self, ccy=None):
+        params = {}
+        if ccy:
+            params['ccy'] = ccy
+        return self._request_with_params(GET, ACCOUNT_INFO, params)
+    
     # Get Positions
     def get_position_risk(self, instType=None):
         params = {}
@@ -14,12 +21,6 @@ class AccountAPI(Client):
             params['instType'] = instType
         return self._request_with_params(GET, POSITION_RISK, params)
 
-    # Get Balance
-    def get_account(self, ccy=None):
-        params = {}
-        if ccy:
-            params['ccy'] = ccy
-        return self._request_with_params(GET, ACCOUNT_INFO, params)
 
     # Get Positions
     def get_positions(self, instType=None, instId=None):
@@ -53,7 +54,7 @@ class AccountAPI(Client):
         return self._request_without_params(GET, ACCOUNT_CONFIG)
 
     # Get Account Configuration
-    def get_position_mode(self, posMode):
+    def set_position_mode(self, posMode):
         params = {'posMode': posMode}
         return self._request_with_params(POST, POSITION_MODE, params)
 

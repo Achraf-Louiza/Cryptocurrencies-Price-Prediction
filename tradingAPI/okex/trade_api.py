@@ -44,12 +44,12 @@ class TradeAPI(Client):
         return self._request_with_params(POST, CLOSE_POSITION, params)
 
     # Get Order Details
-    def get_orders(self, instId, ordId=None, clOrdId=None):
+    def get_order(self, instId, ordId=None, clOrdId=None):
         params = {'instId': instId, 'ordId': ordId, 'clOrdId': clOrdId}
         return self._request_with_params(GET, ORDER_INFO, params)
 
     # Get Order List
-    def get_order_list(self, instType=None, uly=None, instId=None, ordType=None, state=None, after=None, before=None, limit=None):
+    def get_orders_pending(self, instType=None, uly=None, instId=None, ordType=None, state=None, after=None, before=None, limit=None):
         params = {'instType': instType, 'uly': uly, 'instId': instId, 'ordType': ordType, 'state': state,
                   'after': after, 'before': before, 'limit': limit}
         return self._request_with_params(GET, ORDERS_PENDING, params)
